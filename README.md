@@ -1,6 +1,12 @@
+### Easy image sharing from AutoBlog photo galleries
+
 AutoBlug adds a direct image link button to [AutoBlog](http://autoblog.com/) photo galleries. If you've ever gone digging through Safari's web inspector to fetch an image URL to send to your friends, AutoBlug is for you.
 
-<img src="https://github.com/raws/autoblug/raw/gh-pages/images/autoblug.png" width="1159" height="680">
+<img src="https://github.com/raws/autoblug/raw/gh-pages/images/autoblug.png" width="1159">
+
+### Download
+
+Download the latest AutoBlug Safari extension package from [this repository's downloads page](https://github.com/raws/autoblug/downloads).
 
 ### License
 
