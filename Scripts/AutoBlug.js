@@ -4,6 +4,10 @@
  */
 
 var AutoBlug = {
+	button: null,
+	currentUrl: null,
+	tick: 0,
+
 	queueGalleryCheck: function() {
 		setTimeout(AutoBlug.checkGallery, 1000);
 	},
@@ -21,15 +25,34 @@ var AutoBlug = {
 		var url = (li.css("backgroundImage") || "").match(/url\((.*)\)/i);
 		if (!url || url.length < 2) return AutoBlug.queueGalleryCheck();
 		url = url[1];
+
+		if (url == AutoBlug.currentUrl && AutoBlug.tick < 10) {
+			AutoBlug.tick++;
+			return AutoBlug.queueGalleryCheck();
+		} else {
+			AutoBlug.tick = 0;
+		}
 		
-		AutoBlug.createButton(url);
+		AutoBlug.currentUrl = url;
+		AutoBlug.updateButton(url);
+		AutoBlug.setupThumbnailListener();
 	},
 
-	createButton: function(url) {
-		var button = $("<a class='autoblug-image-link' target='_blank'>Image Link</a>").attr("href", url);
-		var li = $("<li></li>").append(button);
-		var gallery = $(".gallery_controls:first").css("width", "inherit");
-		gallery.find("ul:first").css("width", "inherit").prepend(li);
+	createButton: function() {
+		AutoBlug.button = $("<a id='autoblug-button' target='_blank'>Direct Image Link</a>");
+		var actions = $("<div class='autoblug-actions'></div>").append(AutoBlug.button);
+		$("#gallery_wallpaper").before(actions);
+	},
+
+	updateButton: function(url) {
+		if (!AutoBlug.button) AutoBlug.createButton();
+		AutoBlug.button.attr("href", url);
+	},
+
+	setupThumbnailListener: function() {
+		$(".thumbnails").on("click", "li", function(event) {
+			AutoBlug.queueGalleryCheck();
+		});
 	}
 };
 

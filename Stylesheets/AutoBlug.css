@@ -1,7 +1,19 @@
-.autoblug-image-link {
-	background-color: #e0ba0a !important;
+.autoblug-actions {
+	margin: 10px 0 10px 10px !important;
+	float: right !important;
 }
 
-.autoblug-image-link:hover {
-	background-color: #d19d12 !important;
+.autoblug-actions a {
+	height: 16px !important;
+	padding: 4px 10px !important;
+	float: left !important;
+	color: white !important;
+	background-color: #ea232a !important;
+	border-radius: 4px !important;
+	font: normal normal normal 18px/18px BebasNeue, Arial, sans-serif !important;
+}
+
+.autoblug-actions a:hover {
+	background-color: #ba1b20 !important;
+	text-decoration: none !important;
 }
